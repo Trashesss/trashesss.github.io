@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18516460708"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18516460708');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>문도 피구</title>
+  <meta name="description" content="날아오는 식칼을 피하고, 상대 문도를 쓰러뜨리는 피구 게임. 설치·로그인 없이 브라우저에서 친구와 1대1." />
+  <link rel="icon" type="image/png" sizes="128x128" href="/mundo-dodgeball/assets/cartoon/favicon.png" />
+  <link rel="canonical" href="https://trashesss.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:site_name" content="문도 피구" />
+  <meta property="og:url" content="https://trashesss.github.io/" />
+  <meta property="og:title" content="문도 피구" />
+  <meta property="og:description" content="날아오는 식칼을 피하고, 상대 문도를 쓰러뜨리는 피구 게임" />
+  <meta property="og:image" content="https://trashesss.github.io/mundo-dodgeball/assets/cartoon/share-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="문도 피구" />
+  <meta name="twitter:description" content="날아오는 식칼을 피하고, 상대 문도를 쓰러뜨리는 피구 게임" />
+  <meta name="twitter:image" content="https://trashesss.github.io/mundo-dodgeball/assets/cartoon/share-preview.png" />
+  <link rel="preload" href="/mundo-dodgeball/assets/fonts/Jua-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <style>
+    @font-face { font-family: 'Jua'; src: url('/mundo-dodgeball/assets/fonts/Jua-Regular.ttf') format('truetype'); font-display: swap; }
+    :root {
+      --bg: #010a13;
+      --bg-2: #0a1620;
+      --panel: #0f1e2a;
+      --line: rgba(244, 212, 125, 0.18);
+      --gold: #f4d47d;
+      --gold-dim: #785a28;
+      --text: #f0e6d2;
+      --muted: #b3c2c3;
+      --green: #b9e39e;
+      --purple: #b98cf0;
+      --ink: #171e24;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Jua', system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+    section { padding: 88px 0; }
+
+    /* nav */
+    .nav { position: absolute; inset: 0 0 auto; z-index: 3; }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-size: 24px; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold); }
+    .nav-cta { font-size: 15px; color: var(--gold); text-decoration: none; padding: 8px 16px; border: 1px solid var(--gold-dim); border-radius: 999px; }
+    .nav-cta:hover { background: rgba(244, 212, 125, 0.08); }
+
+    /* buttons */
+    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 18px 34px; border-radius: 14px; background: linear-gradient(180deg, #ffe39a, var(--gold)); color: var(--ink); font-size: 22px; text-decoration: none; box-shadow: 0 6px 0 var(--gold-dim), 0 18px 40px rgba(244, 212, 125, 0.25); transition: transform .12s, box-shadow .12s; }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--gold-dim), 0 22px 48px rgba(244, 212, 125, 0.32); }
+    .cta:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--gold-dim), 0 8px 20px rgba(244, 212, 125, 0.2); }
+    .cta svg { width: 22px; height: 22px; }
+    .cta:focus-visible, .nav-cta:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+    .cta-note { margin-top: 18px; font-size: 15px; color: var(--muted); }
+
+    /* hero */
+    .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 100px 0 64px; overflow: hidden; isolation: isolate; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('/mundo-dodgeball/assets/cartoon/arena.png') center / cover no-repeat; opacity: .35; }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 70% 40%, rgba(1, 10, 19, 0.2), var(--bg) 70%), linear-gradient(180deg, rgba(1, 10, 19, 0.4), var(--bg)); }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+    .eyebrow { display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(185, 227, 158, 0.12); color: var(--green); font-size: 15px; margin-bottom: 22px; }
+    h1, h2, h3, p { word-break: keep-all; }
+    h1 { margin: 0; font-size: clamp(38px, 5.4vw, 62px); line-height: 1.12; letter-spacing: -1.5px; font-weight: normal; }
+    h1 em { font-style: normal; color: var(--gold); }
+    .lead { margin: 24px 0 36px; font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 30em; }
+    .hero-art { position: relative; }
+    .hero-art img { width: 100%; border-radius: 28px; transform: rotate(3deg); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(185, 227, 158, 0.15); animation: bob 4s ease-in-out infinite; }
+    .knife { position: absolute; width: 64px; top: 22%; left: -40%; opacity: 0; animation: fly 3.2s cubic-bezier(.3, .1, .3, 1) infinite 1s; pointer-events: none; }
+    @keyframes bob { 50% { transform: rotate(3deg) translateY(-12px); } }
+    @keyframes fly { 0% { transform: translateX(0) rotate(0); opacity: 0; } 10% { opacity: 1; } 60% { opacity: 1; } 75%, 100% { transform: translateX(1400px) rotate(1080deg); opacity: 0; } }
+    .scroll-hint { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); color: var(--muted); font-size: 13px; text-decoration: none; opacity: .7; }
+
+    /* features */
+    .section-title { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); font-weight: normal; letter-spacing: -1px; line-height: 1.2; }
+    .section-sub { margin: 0 0 48px; color: var(--muted); font-size: 18px; }
+    .features { background: var(--bg-2); }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+    .feature-img { aspect-ratio: 3 / 2; background: #f6f1e7; display: grid; place-items: center; overflow: hidden; }
+    .feature-img img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-img.contain img { object-fit: contain; padding: 12px; }
+    .feature-body { padding: 22px 22px 26px; }
+    .feature h3 { margin: 0 0 6px; font-size: 23px; font-weight: normal; line-height: 1.3; }
+    .feature p { margin: 0; color: var(--muted); font-size: 16px; }
+
+    /* steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+    .step { position: relative; padding: 28px 24px; border-radius: 22px; background: linear-gradient(180deg, rgba(244, 212, 125, 0.07), rgba(244, 212, 125, 0.01)); border: 1px solid var(--line); }
+    .step::before { counter-increment: step; content: counter(step, decimal-leading-zero); display: block; font-size: 52px; line-height: 1; color: var(--gold); margin-bottom: 14px; }
+    .step h3 { margin: 0 0 8px; font-size: 22px; font-weight: normal; }
+    .step p { margin: 0; color: var(--muted); font-size: 16px; }
+    .keys { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    kbd { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 9px; background: #1d2b36; border: 1px solid #2f4252; border-bottom-width: 3px; font-family: inherit; font-size: 14px; color: var(--text); }
+    kbd b { font-weight: normal; color: var(--gold); }
+
+    /* showcase */
+    .showcase { padding-top: 0; }
+    .screen { max-width: 760px; margin: 0 auto; border-radius: 22px; padding: 10px; background: linear-gradient(180deg, #2a3a46, #121c24); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6); }
+    .screen img { border-radius: 14px; width: 100%; }
+    .caption { margin: 22px 0 0; text-align: center; color: var(--muted); font-size: 18px; }
+    .caption b { color: var(--text); font-weight: normal; }
+
+    /* final cta */
+    .final { text-align: center; background: radial-gradient(ellipse at 50% 120%, rgba(185, 140, 240, 0.22), transparent 60%), var(--bg-2); }
+    .final img { width: 140px; margin: 0 auto 18px; }
+    .final .section-sub { margin-bottom: 36px; }
+
+    footer { padding: 32px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); color: #7d8a8f; font-family: system-ui, sans-serif; font-size: 12px; line-height: 1.7; }
+    footer a { color: #a6b3b8; }
+
+    @media (max-width: 860px) {
+      section { padding: 64px 0; }
+      .hero { padding-top: 88px; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .lead { margin-left: auto; margin-right: auto; }
+      .hero-art { max-width: 340px; margin: 0 auto; }
+      .feature-grid, .steps { grid-template-columns: 1fr; }
+      .scroll-hint { display: none; }
+    }
+    @media (max-width: 420px) {
+      .cta { width: 100%; justify-content: center; padding: 17px 20px; }
+      .nav-cta { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-art img, .knife { animation: none; }
+      .knife { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="logo" href="/">문도 <span>피구</span></a>
+      <a class="nav-cta js-play" href="/mundo-dodgeball/">바로 플레이</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">설치 X · 로그인 X · 무료</span>
+          <h1>롤 켜기엔 귀찮고,<br /><em>친구는 이기고 싶을 때</em></h1>
+          <p class="lead">링크 하나로 바로 1대1. 날아오는 식칼을 피하고 상대 문도를 먼저 쓰러뜨리면 끝나는 1분짜리 문도 피구.</p>
+          <a class="cta js-play" href="/mundo-dodgeball/">
+            지금 한 판 하기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <p class="cta-note">PC 브라우저에서 바로 시작돼요</p>
+        </div>
+        <div class="hero-art">
+          <img src="/mundo-dodgeball/assets/cartoon/cleaver-icon.png" alt="식칼을 던지는 문도" width="1254" height="1254" fetchpriority="high" />
+        </div>
+      </div>
+      <svg class="knife" viewBox="0 0 64 32" aria-hidden="true"><rect x="2" y="12" width="20" height="8" rx="3" fill="#8a5a3a"/><path d="M20 6h36a6 6 0 0 1 6 6v14H20z" fill="#dfe6ea" stroke="#252132" stroke-width="2"/><circle cx="54" cy="12" r="2.4" fill="#252132"/></svg>
+      <a class="scroll-hint" href="#features">아래로 ↓</a>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <h2 class="section-title">스킬샷 실력, 말로 하지 말고</h2>
+        <p class="section-sub">누가 더 잘 피하고 잘 맞히는지 한 판이면 끝납니다.</p>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-img"><img src="/mundo-dodgeball/assets/cartoon/mundo-friends-v4.png" alt="게임하는 두 문도" width="1536" height="1024" loading="lazy" /></div>
+            <div class="feature-body">
+              <h3>링크 보내면 바로 1대1</h3>
+              <p>방 만들고 초대 링크만 보내세요. 친구는 누르기만 하면 같은 방에 들어와요.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature-img contain"><img src="/mundo-dodgeball/assets/cartoon/mundo-bot-v6.png" alt="봇 문도" width="1254" height="1254" loading="lazy" /></div>
+            <div class="feature-body">
+              <h3>친구 없으면 봇이랑</h3>
+              <p>쉬움부터 페이커까지. 자신 있으면 문도 둘이 덤비는 쌍둥이 1대2.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature-img"><img src="/mundo-dodgeball/assets/cartoon/mundo-victory-taunt-meme-v2.png" alt="발로 마우스를 누르며 이긴 문도" width="1536" height="1024" loading="lazy" /></div>
+            <div class="feature-body">
+              <h3>이기면 굴욕 링크 발송</h3>
+              <p>친구전에서 이기면 “넌 발로 해도 이긴다 ㅋ” 링크를 보낼 수 있어요.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2 class="section-title">30초면 시작해요</h2>
+        <p class="section-sub">롤 해봤으면 설명 없이도 손이 먼저 갑니다.</p>
+        <ol class="steps">
+          <li class="step">
+            <h3>모드 고르기</h3>
+            <p><b>친구와 1대1</b> 또는 <b>인공지능 상대 연습</b> 중 하나를 고르세요.</p>
+          </li>
+          <li class="step">
+            <h3>링크 보내고 준비</h3>
+            <p>친구전이면 초대 링크를 보내고, 둘 다 준비를 누르면 3초 뒤 시작해요.</p>
+          </li>
+          <li class="step">
+            <h3>던지고, 피하고</h3>
+            <p>체력을 먼저 0으로 만드는 쪽이 이겨요.</p>
+            <div class="keys">
+              <kbd><b>우클릭</b> 이동</kbd>
+              <kbd><b>Q</b> 식칼</kbd>
+              <kbd><b>D</b> 점멸</kbd>
+              <kbd><b>F</b> 유체화</kbd>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="showcase">
+      <div class="wrap">
+        <div class="screen"><img src="screenshot.jpg" alt="식칼을 던지는 문도와 봇 문도가 맞붙은 게임 화면" width="908" height="768" loading="lazy" /></div>
+        <p class="caption"><b>시간 제한 없는 단판 승부.</b> 동시에 쓰러지면 재경기.</p>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <img src="/mundo-dodgeball/assets/cartoon/mundo-thumbs-up-emote-v1.png" alt="" width="1254" height="1254" loading="lazy" />
+        <h2 class="section-title">친구 롤 실력, 여기서 검증하세요</h2>
+        <p class="section-sub">문도는 가고 싶은 곳으로 갑니다. 지금 바로.</p>
+        <a class="cta js-play" href="/mundo-dodgeball/">
+          지금 한 판 하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      문도피구는 라이엇 게임즈의 ‘지식재산 이용 정책’에 따라 라이엇 게임즈 소유의 자산을 이용하여 제작되었습니다. 라이엇 게임즈는 이 프로젝트를 지지하거나 후원하지 않습니다.<br />
+      제작자 : <a href="mailto:wkdeogks17@gmail.com">wkdeogks17@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // 광고 클릭 ID·UTM 등 들어온 쿼리를 게임으로 그대로 넘긴다
+    if (location.search) {
+      document.querySelectorAll('.js-play').forEach(function (a) { a.href = '/mundo-dodgeball/' + location.search; });
+    }
+  </script>
+</body>
+</html>
